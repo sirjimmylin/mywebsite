@@ -1,58 +1,50 @@
-# <!DOCTYPE html>
-# <html>
-#   <head>
-#     <title><%= content_for(:title) || "Mywebsite" %></title>
-#     <meta name="viewport" content="width=device-width,initial-scale=1">
-#     <meta name="apple-mobile-web-app-capable" content="yes">
-#     <meta name="application-name" content="Mywebsite">
-#     <meta name="mobile-web-app-capable" content="yes">
-#     <%= csrf_meta_tags %>
-#     <%= csp_meta_tag %>
-
-#     <%= yield :head %>
-
-#     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-#     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-#     <link rel="icon" href="/icon.png" type="image/png">
-#     <link rel="icon" href="/icon.svg" type="image/svg+xml">
-#     <link rel="apple-touch-icon" href="/icon.png">
-
-#     <%# Includes all stylesheet files in app/assets/stylesheets %>
-#     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-#     <%= javascript_importmap_tags %>
-#   </head>
-
-#   <body>
-#     <%= yield %>
-#   </body>
-# </html>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PersonalWebsite</title>
+    <title>Jimmy Lin</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-  </head>
+    
+    </head>
 
-  <body>
-    <!-- START NAVIGATION -->
-    <nav style="background-color: #333; padding: 10px;">
-      <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; color: white;">
-        <li><%= link_to "Home", root_path, style: "color: white; text-decoration: none;" %></li>
-        <li><%= link_to "Projects", projects_path, style: "color: white; text-decoration: none;" %></li>
-        <li><%= link_to "Blog", posts_path, style: "color: white; text-decoration: none;" %></li>
-        <li><%= link_to "About", about_path, style: "color: white; text-decoration: none;" %></li>
-      </ul>
-    </nav>
-    <!-- END NAVIGATION -->
+  <body style="margin: 0; font-family: sans-serif;">
+    
+    <header style="background-color: #333; color: white; padding: 1rem;">
+      <nav style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto;">
+        
+        <div style="font-weight: bold; font-size: 1.2rem;">
+          <%= link_to "Jimmy Lin", root_path, style: "color: white; text-decoration: none;" %>
+        </div>
 
-    <div style="padding: 20px;">
+        <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;">
+          <li><%= link_to "Home", root_path, style: "color: white; text-decoration: none;" %></li>
+          <li><%= link_to "Projects", projects_path, style: "color: white; text-decoration: none;" %></li>
+          <li><%= link_to "Blog", posts_path, style: "color: white; text-decoration: none;" %></li>
+          <li><%= link_to "About", about_path, style: "color: white; text-decoration: none;" %></li>
+        </ul>
+
+      </nav>
+    </header>
+
+    <main style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem;">
+      
+      <% flash.each do |key, message| %>
+        <div style="padding: 10px; margin-bottom: 20px; background-color: #f0f0f0; border: 1px solid #ccc;">
+          <%= message %>
+        </div>
+      <% end %>
+
       <%= yield %>
-    </div>
+    </main>
+
+    <footer style="text-align: center; padding: 2rem; background-color: #f9f9f9; margin-top: 2rem; font-size: 0.9rem; color: #666;">
+      <p>&copy; <%= Time.current.year %> My Personal Website</p>
+    </footer>
+
   </body>
 </html>
