@@ -2,12 +2,12 @@
 service: mywebsite
 
 # Name of the container image (use your-user/app-name on external registries).
-image: mywebsite
+image: sirjimmylin/mywebsite
 
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 104.236.93.159
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -20,9 +20,9 @@ servers:
 #
 # Don't use this when deploying to multiple web servers (then you have to terminate SSL at your load balancer).
 #
-# proxy:
-#   ssl: true
-#   host: app.example.com
+proxy:
+  ssl: true
+  host: jimmylin-portfolio.com
 
 # Where you keep your container images.
 registry:
@@ -30,7 +30,7 @@ registry:
   server: localhost:5555
 
   # Needed for authenticated registries.
-  # username: your-user
+  username: sirjimmylin
 
   # Always use an access token rather than real password when possible.
   # password:
@@ -69,7 +69,7 @@ aliases:
 # Use a persistent storage volume for sqlite database files and local Active Storage files.
 # Recommended to change this to a mounted volume path that is backed up off server.
 volumes:
-  - "mywebsite_storage:/rails/storage"
+  - "volume-nyc3-01:/rails/storage"
 
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid
 # hitting 404 on in-flight requests. Combines all files from new and old
